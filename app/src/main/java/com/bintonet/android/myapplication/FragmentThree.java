@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.robohorse.pagerbullet.PagerBullet;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +35,7 @@ public class FragmentThree extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     String pageData[];          //Stores the text to swipe.
-    ViewPager vp;
+    PagerBullet mPager;
     LayoutInflater inflater;
 
     private PagerAdapter mPagerAdapter;
@@ -79,9 +81,11 @@ public class FragmentThree extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_fragment_three, container, false);
-        vp = (ViewPager) view.findViewById(R.id.viewPager);
+        mPager = (PagerBullet) view.findViewById(R.id.viewPager);
+
         mPagerAdapter = new ScreenSlidePagerAdapter();
-        vp.setAdapter(mPagerAdapter);
+        mPager.setAdapter(mPagerAdapter);
+        mPager.invalidateBullets(mPagerAdapter);
 
         // Inflate the layout for this fragment
         return view;
